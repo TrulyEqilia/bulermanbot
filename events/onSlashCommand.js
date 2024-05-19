@@ -37,7 +37,6 @@ module.exports = {
 		if (!interaction.isChatInputCommand())
 			return;
 
-		console.error(interaction.commandName);
 		const command = globalThis.client.commands.get(interaction.commandName);
 
 		if (command === undefined) {
