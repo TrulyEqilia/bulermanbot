@@ -3,8 +3,7 @@ const fs = require('node:fs');
 
 globalThis.client.commands = new Map();
 
-globalThis.reloadCommands()
-{
+globalThis.reloadCommands = () => {
 	let i = 0;
 
 	const cmdDir = fs.readdirSync(globalThis.config.directories.commandDir);
