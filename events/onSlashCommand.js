@@ -6,13 +6,13 @@ globalThis.client.commands = new Map();
 globalThis.reloadCommands = () => {
 	let i = 0;
 
-	const cmdDir = fs.readdirSync(globalThis.config.directories.commandDir);
+	const cmdDir = fs.readdirSync(globalThis.config.directories.commandsDir);
 	const cmdFiles = cmdDir.filter((fileName) => fileName.endsWith('.js'));
 
 	for (;i < cmdFiles.length; i++) {
 		const cmdModuleFileName = cmdFiles[i];
 
-		const cmdModulePath = path.join(process.cwd(), cmdModuleFileName);
+		const cmdModulePath = path.join(process.cwd(), globalThis.config.directories.commandsDir, cmdModuleFileName);
 
 		delete require.cache[require.resolve(cmdModulePath)];
 		const cmdModule = require(cmdModulePath);
@@ -28,11 +28,22 @@ globalThis.reloadCommands = () => {
 		globalThis.client.commands.set(cmdModule.name, cmdModule);
 	}
 }
+globalThis.reloadCommands();
 
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction)
 	{
-		/* noop */
+		if (!interaction.isChatInputCommand())
+			return;
+
+		console.error(interaction.commandName);
+		const command = globalThis.client.commands.get(interaction.commandName);
+
+		if (command === undefined) {
+			return await interaction.reply('OwO');
+		}
+
+		command.execute(interaction);
 	}
 }
