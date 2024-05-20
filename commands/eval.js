@@ -14,7 +14,7 @@ module.exports = {
 		if (i.user.id !== '1202021421677826052')
 			return await i.reply('OwO');
 
-		const input = i.options.get('kod');
+		const input = i.options.get('kod').value;
 		let output;
 
 		try {
