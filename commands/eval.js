@@ -20,7 +20,7 @@ module.exports = {
 		try {
 			output = await util.inspect(eval(input));
 		} catch (e) {
-			output = util.inspect(e);
+			output = `${e}`;
 		}
 
 		return i.reply(output);
