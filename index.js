@@ -7,10 +7,17 @@ const { Client, GatewayIntentBits } = require('discord.js');
 globalThis.config = require('./config.json');
 dotenv.config();
 
+const a = require('./dbModule.js');
+
+globalThis.db = a.db
+globalThis.moderative = a.moderative
+globalThis.profile = a.profile
+
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMembers
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildMessages
 	]
 });
 globalThis.client = client;
