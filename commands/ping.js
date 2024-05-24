@@ -6,6 +6,15 @@ module.exports = {
 	data: new SlashCommandBuilder(),
 	async execute(i)
 	{
-		i.reply('ok');
+		const embed = {
+			title: '🏓 ping',
+			description: `ping: ${i.client.ws.ping}`
+		}
+
+		i.reply({
+			embeds: [
+				embed
+			]
+		});
 	}
 }
