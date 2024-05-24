@@ -8,7 +8,7 @@ module.exports = {
 	{
 		const embed = {
 			title: '🏓 ping',
-			description: `ping: ${i.client.ws.ping}`
+			description: `ping: ${i.client.ws.ping}ms`
 		}
 
 		i.reply({
