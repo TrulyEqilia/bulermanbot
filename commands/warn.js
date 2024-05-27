@@ -20,6 +20,10 @@ module.exports = {
 			globalThis.profile.reinitialiseUserProfile(victim.value);
 		};
 
-		return i.reply(`${victim.value}: ${profile.warnings}`);
+		const warns = globalThis.moderative.warnUser(victim.value);
+
+		console.error(victim);
+
+		return i.reply(`Ostrzeżono <@${victim.value}>. To już jego ${globalThis.odmianyCyfr[warns]} ostrzeżenie.`);
 	}
 }
