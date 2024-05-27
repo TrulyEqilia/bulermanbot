@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	name: 'ping',
-	description: 'pizg',
+	description: 'Gra w paletki!!',
 	data: new SlashCommandBuilder(),
 	async execute(i)
 	{
