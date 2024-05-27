@@ -24,6 +24,6 @@ module.exports = {
 
 		console.error(victim);
 
-		return i.reply(`Ostrzeżono <@${victim.value}>. To już jego ${globalThis.odmianyCyfr[warns]} ostrzeżenie.`);
+		return i.reply(`Ostrzeżono <@${victim.value}>. To już ${victim.value === '1125528136524775444' ? 'jej' : 'jego' } ${globalThis.odmianyCyfr[warns]} ostrzeżenie.`);
 	}
 }
