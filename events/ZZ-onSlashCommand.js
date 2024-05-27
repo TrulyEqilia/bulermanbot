@@ -4,6 +4,7 @@ const fs = require('node:fs');
 globalThis.client.commands = new Map();
 
 globalThis.reloadCommands = () => {
+	process.stdout.write('Komendy:\n');
 	let i = 0;
 
 	const cmdDir = fs.readdirSync(globalThis.config.directories.commandsDir);
@@ -25,8 +26,12 @@ globalThis.reloadCommands = () => {
 			throw new TypeError(`cmdModule.execute expected to have type of function, not type of ${typeof cmdModule.execute}!!`);
 		}
 
+		process.stdout.write(`\t${cmdModulePath} -> ${cmdModule.name}\n`);
+
 		globalThis.client.commands.set(cmdModule.name, cmdModule);
 	}
+
+	process.stdout.write('\n');
 }
 globalThis.reloadCommands();
 
